@@ -1,0 +1,52 @@
+body {
+text-align: center;
+width: 100%;
+Height: 100%;
+
+}
+
+header {
+width: 100%;
+min-width: 450px;
+height: 800px;
+border: 3px solid black;
+
+
+}
+#song_label {
+	position: relative;
+	top: -35px;
+	left: 140px;
+	
+
+}
+
+#track {
+	position: relative;
+	top: -258px;
+	background-color: black;
+}
+
+#next_Track {
+	position: relative;
+	top: -225px;
+	left: 190px;
+
+}
+
+
+#prev_Track {
+	position: relative;
+	top: -225px;
+	right: 190px;
+
+}
+
+#ProjectName {
+position: relative;
+	width: 170px;
+
+
+}
+
+
