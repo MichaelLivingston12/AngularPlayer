@@ -2,37 +2,39 @@
 <HTML lang = "en" ng-app = "myApp">
 
 <head>
+<script src = "js/angular.min.js"></script>
+<script src = "js/controller.js"></script>
 
 <link href = "css/bootstrap.min.css" rel = "stylesheet" />
 <link href = "css/newP.css" rel = "stylesheet" />
 </head>
 <body>
 
-<header>
-<img id = "boom_box" src = "images/boombox.jpg" />
-<div id = "music_controls">
-				<div id = "song_label" class="form-group" >
-					<input type="text" class="form-control" id="ProjectName" name = "proj_name" value="Click Above to Choose a Project" readonly />
-				</div>
-				
-				<audio id = "track" controls >
-					<source  src = "music/BadIntentions.m4a" type="audio/mpeg" />
-					Please Update Your Browser to hear Work by Matty P.
-				</audio>
+<header ng-controller = "MyController" >
 
-</div>
-<img id = "next_Track" src = "images/nextTrack.png" width = "100px" height = "100px"/>
-<img id = "prev_Track" src = "images/prevTrack.png" width = "100px" height = "100px"/>
+<img id = "boom_box" src = "images/boombox.jpg" />
+		<div id = "song_label" class="form-group" ng-repeat = "item in tracks" >
+							<input type="text"  id="ProjectName" name = "proj_name" ng-show="$index==$parent.activeSong" value="{{item.title}}" readonly />
+		</div>
+			<div id = "music_controls" ng-repeat = "item in tracks" >	
+							<audio id = "track" controls ng-show="$index==$parent.activeSong">
+								<src = "music/{{item.file}}.mp3" type="audio/mpeg" />
+								Please Update Your Browser to hear Work by Matty P.
+							</audio>
+			</div>
+					<img id = "next_Track" src = "images/nextTrack.png" width = "100px" height = "100px" ng-disabled="$index==0" ng-click="activeSong=$index-1"/>
+					<img id = "prev_Track" src = "images/prevTrack.png" width = "100px" height = "100px" ng-disabled="$index==(MyController.item.length-1)" ng-click="activeSong=$index+1" />
+		
 </header>
 
 
 
 
 
-
 <script src = "js/jquery_11.js"></script>
-<script src = "js/bootstrap.min.js"></script> 
 <script src = "js/mattyPractice.js"></script>
+<script src = "js/bootstrap.min.js"></script> 
+
 </body>
 
 </html>
